@@ -1,0 +1,62 @@
+package com.dell.delta_uat_automation.esupport.pages;
+import java.util.Hashtable;
+
+import com.dell.delta_uat_automation.utility.ReadExcel;
+import com.dell.delta_uat_automation.utility.TestNGCreator;
+
+public class EsupportPojo {
+	
+	//SFDC page variables
+	
+	public static Hashtable<String, String> OrderHomePage_Data = null; 
+	public static Hashtable<String, String> RecentOrderPage_Data = null; 
+	public static Hashtable<String, String> RetailAssetPage_Data = null;
+	public static Hashtable<String, String> DriversandDownloads_Data = null;
+	public static Hashtable<String, String> IncidentsPage_Data = null;
+    public static Hashtable<String, String> MPSPage_Data = null;
+    public static Hashtable<String, String> CoveoPage_Data = null;
+    public static Hashtable<String, String> IntegratedHomePage_Data = null;
+	
+	// read from excel store it in hash objects for all pages
+	public void storePageDataFromExcel(String environment) {
+
+		try
+		{
+          
+			 if(environment.equalsIgnoreCase("ES4") || environment.equalsIgnoreCase("ES3")|| environment.equalsIgnoreCase("ES2")||environment.equalsIgnoreCase("ES1"))
+			{
+				System.out.println("Reading the entire Repository sheets of ESUPPORT Application!!!!!");
+
+				OrderHomePage_Data = ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "OrderHomePage",
+						"Object Name / Label Name", "Locator Type%Object Properties");
+				
+				RecentOrderPage_Data = ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "RecentOrderPage",
+										"Object Name / Label Name", "Locator Type%Object Properties"); 
+				RetailAssetPage_Data =ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "RetailAssetPage",
+						"Object Name / Label Name", "Locator Type%Object Properties"); 
+				DriversandDownloads_Data =ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "DriversandDownloads",
+						"Object Name / Label Name", "Locator Type%Object Properties"); 
+				IncidentsPage_Data =ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "IncidentsPage",
+						"Object Name / Label Name", "Locator Type%Object Properties"); 
+				MPSPage_Data =ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "MPSPage",
+			            "Object Name / Label Name", "Locator Type%Object Properties");
+				CoveoPage_Data =ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "CoveoPage",
+			            "Object Name / Label Name", "Locator Type%Object Properties");
+				IntegratedHomePage_Data =ReadExcel.getEntireExcelSheetData(TestNGCreator.folderPath, "IntegratedHomePage",
+                        "Object Name / Label Name", "Locator Type%Object Properties");
+
+				System.out.println("Reading Repository sheets of ESUPPORT Application Successfully done!!!!!!");
+			}
+
+		}catch(Exception e)
+		{
+			System.out.println("Unable to read the entire repository excel file");
+		}
+	}
+
+
+
+
+}
+
+
